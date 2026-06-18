@@ -1,0 +1,163 @@
+/* ===== CSS VARIABLES ===== */
+:root {
+  --accent: #f4a0b0;
+  --btn-bg: #fde8ee;
+  --btn-hover: #f9c8d8;
+  --text-main: #5a2d3a;
+  --btn-special: #f7b8c8;
+  --btn-operator: #e8a0b0;
+  --radius: 10px;
+  --font: 'Comic Sans MS', 'Chalkboard SE', cursive;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  background: #fff;
+  gap: 20px;
+}
+
+/* ===== CUSTOMIZATION PANEL ===== */
+.customize-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  background: rgba(255,220,230,0.4);
+  border: 1px solid rgba(200,100,120,0.2);
+  border-radius: 12px;
+  padding: 10px 16px;
+  color: #5a2d3a;
+  font-size: 0.8rem;
+}
+
+.customize-panel label { font-weight: 600; }
+.customize-panel input[type="file"] { color: #5a2d3a; font-size: 0.75rem; }
+.customize-panel input[type="color"] {
+  width: 36px; height: 28px;
+  border: none; border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ===== FRAME WRAPPER — this is what holds your Slowpoke image ===== */
+.calculator-frame {
+  position: relative;
+  width: 480px;        /* match your image's natural proportions */
+  height: 550px;       /* adjust if image is taller/shorter */
+}
+
+/* The Slowpoke image sits behind everything */
+.calculator-frame img.slowpoke-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;   /* stretches to fill the frame exactly */
+  z-index: 0;
+}
+
+/* The calculator content sits on top, inside the white rectangle */
+.calculator {
+  position: absolute;
+  z-index: 1;
+  /* 👇 These values place content inside Slowpoke's white rectangle */
+  top: 215px;            /* distance from top of image to white rectangle */
+  left: 160px;           /* distance from left edge to inside border */
+  width: 160px;
+  height: 250px;           /* width of the white rectangle area */
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 3px;
+}
+
+/* ===== DISPLAY ===== */
+.display {
+  background: rgba(255, 240, 245, 0.5);
+  border-radius: 6px;
+  border: 1.5px solid rgba(200, 100, 120, 0.25);
+  padding: 4px 8px;
+  text-align: right;
+  min-height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1px;
+}
+
+.display-expression {
+  font-size: 0.6rem;
+  color: #b08080;
+}
+
+.display-result {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #5a3a3a;
+}
+
+/* ===== BUTTON GRID ===== */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  flex: 1; /* take up remaining vertical space */
+}
+
+/* ===== BASE BUTTON ===== */
+.btn {
+  height: 100%; 
+  min-height: 32px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: var(--btn-bg);
+  color: var(--text-main);
+  font-family: var(--font);
+  border: 1px solid rgba(200, 100, 120, 0.25);
+  overflow: hidden;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn.special {
+  background: var(--btn-special);
+  color: #c0507a;
+  font-size: 1rem;
+}
+
+.btn.operator {
+  background: var(--btn-operator);
+  color: #a03050;
+}
+
+.btn.operator[data-action="equals"] {
+  background: #f4a0b0;
+  color: white;
+  font-weight: 700;
+  border: none;
+}
+
+/* ===== POWER OFF ===== */
+.calculator.powered-off .display-result {
+  color: transparent;
+}
