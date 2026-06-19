@@ -103,6 +103,11 @@ body {
   font-size: 1.2rem;
   font-weight: 400;
   color: #5a3a3a;
+  word-break: break-all;    /* 👈 breaks long numbers onto next line */
+  overflow: hidden;          /* 👈 hides anything that still overflows */
+  text-overflow: ellipsis;   /* 👈 shows ... if number is too long */
+  white-space: nowrap;       /* 👈 keeps it on one line then cuts off */
+  max-width: 100%;           /* 👈 never wider than the display box */
 }
 
 /* ===== BUTTON GRID ===== */
