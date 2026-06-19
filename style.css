@@ -166,3 +166,66 @@ body {
 .calculator.powered-off .display-result {
   color: transparent;
 }
+
+/* ===== EYES OVERLAY ===== */
+.eyes-overlay {
+  position: absolute;
+  z-index: 2;
+  top: 25%;           /* 👈 adjust to align with Slowpoke's eyes */
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 32px;          /* 👈 space between eyes */
+  pointer-events: none;
+}
+
+/* Normal eye = just invisible (your drawing shows through) */
+.eye {
+  width: 36px;
+  height: 36px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pupil {
+  width: 14px;
+  height: 14px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  opacity: 0;         /* hidden by default, drawing shows through */
+}
+
+/* ===== HEART EYES ===== */
+.eyes-overlay.heart-eyes .pupil {
+  opacity: 1;
+  background: #ff4d79;
+  border-radius: 0;
+  width: 18px;
+  height: 18px;
+  transform: rotate(45deg) scale(1.2);
+  position: relative;
+}
+
+.eyes-overlay.heart-eyes .pupil::before,
+.eyes-overlay.heart-eyes .pupil::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #ff4d79;
+  border-radius: 50%;
+}
+
+.eyes-overlay.heart-eyes .pupil::before {
+  top: -9px;
+  left: 0;
+}
+
+.eyes-overlay.heart-eyes .pupil::after {
+  left: -9px;
+  top: 0;
+}
